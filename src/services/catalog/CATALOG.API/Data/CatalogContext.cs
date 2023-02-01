@@ -16,6 +16,7 @@ namespace CATALOG.API.Data
             CatalogConextSeed.SeedData(Products);
 
         }
-        public IMongoCollection<Product> Products { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IMongoCollection<Product> Products { get; }
+       // IMongoCollection<Product> ICatalogContext.Products { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

@@ -61,18 +61,14 @@ namespace CATALOG.API.Repositories
                         && updateResult.ModifiedCount > 0;
         }
 
-        public Task DeleteProduct(string id)
+        public async Task<bool> DeleteProduct(string id)
         {
-            throw new NotImplementedException();
+            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Id, id);
+            DeleteResult deleteResult = await _context
+                                       .Products
+                                       .DeleteOneAsync(filter);
+            return deleteResult.IsAcknowledged
+                        && deleteResult.DeletedCount > 0;
         }
-
-        
-
-        
-
-        
-        
-
-        
     }
 }
